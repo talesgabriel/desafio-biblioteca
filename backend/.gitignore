@@ -1,0 +1,17 @@
+/.bundle
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+/storage/*
+!/storage/.keep
+/config/master.key
+.env
+.env.*
+*.sqlite3
+*.sqlite3-*
+/coverage/
+.DS_Store

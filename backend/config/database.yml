@@ -1,0 +1,27 @@
+# PostgreSQL. Configured via environment variables so no secrets live in code.
+#
+#   ENV DATABASE_HOST     (default: localhost)
+#   ENV DATABASE_PORT     (default: 5432)
+#   ENV DATABASE_USERNAME (default: postgres)
+#   ENV DATABASE_PASSWORD (default: postgres)
+#
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: <%= ENV.fetch("DATABASE_HOST", "localhost") %>
+  port: <%= ENV.fetch("DATABASE_PORT", 5432) %>
+  username: <%= ENV.fetch("DATABASE_USERNAME", "postgres") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD", "postgres") %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: mossoro_library_development
+
+test:
+  <<: *default
+  database: mossoro_library_test
+
+production:
+  <<: *default
+  database: <%= ENV.fetch("DATABASE_NAME", "mossoro_library_production") %>
